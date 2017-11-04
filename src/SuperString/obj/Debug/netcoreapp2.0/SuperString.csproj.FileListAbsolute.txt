@@ -1,0 +1,9 @@
+J:\VsGit\SuperString\src\SuperString\bin\Debug\netcoreapp2.0\SuperString.deps.json
+J:\VsGit\SuperString\src\SuperString\bin\Debug\netcoreapp2.0\SuperString.dll
+J:\VsGit\SuperString\src\SuperString\bin\Debug\netcoreapp2.0\SuperString.pdb
+J:\VsGit\SuperString\src\SuperString\obj\Debug\netcoreapp2.0\SuperString.csproj.CoreCompileInputs.cache
+J:\VsGit\SuperString\src\SuperString\obj\Debug\netcoreapp2.0\SuperString.AssemblyInfoInputs.cache
+J:\VsGit\SuperString\src\SuperString\obj\Debug\netcoreapp2.0\SuperString.AssemblyInfo.cs
+J:\VsGit\SuperString\src\SuperString\obj\Debug\netcoreapp2.0\SuperString.dll
+J:\VsGit\SuperString\src\SuperString\obj\Debug\netcoreapp2.0\SuperString.pdb
+J:\VsGit\SuperString\src\SuperString\obj\Debug\netcoreapp2.0\SuperString.csprojResolveAssemblyReference.cache

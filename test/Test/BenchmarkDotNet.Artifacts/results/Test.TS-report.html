@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>TS</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.10.10, OS=Windows 10 Redstone 1 [1607, Anniversary Update] (10.0.14393.1770)
+Processor=Intel Core i7-6700HQ CPU 2.60GHz (Skylake), ProcessorCount=8
+Frequency=2531249 Hz, Resolution=395.0619 ns, Timer=TSC
+.NET Core SDK=2.0.2
+  [Host]     : .NET Core 2.0.0 (Framework 4.6.00001.0), 64bit RyuJIT  [AttachedDebugger]
+  DefaultJob : .NET Core 2.0.0 (Framework 4.6.00001.0), 64bit RyuJIT
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>   Method</th><th>Mean</th><th>Error</th><th>StdDev</th>
+</tr>
+</thead><tbody><tr><td>测试StringBuilder</td><td>23.55 ns</td><td>0.3180 ns</td><td>0.2819 ns</td>
+</tr><tr><td>测试StringJoin</td><td>67.84 ns</td><td>1.1584 ns</td><td>1.0836 ns</td>
+</tr><tr><td>测试SuperString</td><td>22.60 ns</td><td>0.4989 ns</td><td>1.3990 ns</td>
+</tr></tbody></table>
+</body>
+</html>
