@@ -1,0 +1,2 @@
+# SuperString
+Just for fun.
