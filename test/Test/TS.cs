@@ -20,7 +20,7 @@ namespace Test
             StringBuilder b_str = new StringBuilder();
             //for (int i = 0; i < count; i += 1)
             //{
-                b_str.Append("ttt");
+                b_str.Append("tttt");
            // }
         }
         [Benchmark(Description = "测试StringJoin")]
@@ -29,7 +29,7 @@ namespace Test
             string str = string.Empty;
             //for (int i = 0; i < count; i += 1)
             //{
-                str = String.Join("",str, "ttt");
+                str = String.Join("",str, "tttt");
            // }
         }
         [Benchmark(Description = "测试SuperString")]
@@ -38,7 +38,7 @@ namespace Test
             EString e_str = string.Empty;
             //for (int i = 0; i < count; i += 1)
             //{
-                e_str += "ttt";
+                e_str += "tttt";
             //}
         }
     }

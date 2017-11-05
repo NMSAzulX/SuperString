@@ -11,6 +11,6 @@ Frequency=2531249 Hz, Resolution=395.0619 ns, Timer=TSC
 ```
 |          Method |     Mean |     Error |    StdDev |
 |---------------- |---------:|----------:|----------:|
-| 测试StringBuilder | 23.55 ns | 0.3180 ns | 0.2819 ns |
-|    测试StringJoin | 67.84 ns | 1.1584 ns | 1.0836 ns |
-|   测试SuperString | 22.60 ns | 0.4989 ns | 1.3990 ns |
+| 测试StringBuilder | 22.33 ns | 0.4956 ns | 1.2435 ns |
+|    测试StringJoin | 69.04 ns | 1.3906 ns | 1.3007 ns |
+|   测试SuperString | 24.26 ns | 0.3091 ns | 0.2741 ns |
