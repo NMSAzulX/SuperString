@@ -3320,6 +3320,9 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "J:\\VsGit\\SuperString\\test\\Test\\Test.csproj",
       "projectName": "Test",
@@ -3361,7 +3364,7 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "2.0.0",
+            "version": "2.0",
             "autoReferenced": true
           },
           "BenchmarkDotNet": {
