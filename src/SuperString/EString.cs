@@ -2,11 +2,12 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.Versioning;
+using System.Text;
 
 #if BIT64
     using nuint = System.UInt64;
 #else // BIT64
-using nuint = System.UInt32;
+    using nuint = System.UInt32;
 #endif // BIT64
 
 namespace System
@@ -105,7 +106,7 @@ namespace System
             source.ContactString(dest.ToString("yyyy-MM-dd HH:mm:ss"));
             return source;
         }
-        public static EString operator +(EString source,string dest)
+        public static EString operator +(EString source, string dest)
         {
             source.ContactString(dest);
             return source;
@@ -115,7 +116,79 @@ namespace System
             source.ContactString(dest._value);
             return source;
         }
-        [System.Security.SecurityCritical]
+
+        public static implicit operator string(EString v)
+        {
+            return Copy(v._value);
+        }
+
+        public char this[int index]
+        {
+            get { return _value[index]; }
+            set { Change(index, value); }
+
+        }
+
+        /// <summary>
+        /// 根据索引进行赋值
+        /// </summary>
+        /// <param name="index">索引</param>
+        /// <param name="ch">新字符</param>
+        public unsafe void Change(in int index,in char ch)
+        {
+            fixed (char* pointerToResult = _value)
+            {
+                fixed (byte* pointerToTempString = BitConverter.GetBytes(ch))
+                {
+                    Memmove((byte*)(pointerToResult + index), pointerToTempString, (uint)(CharSize));
+                }
+            }
+        }
+        /// <summary>
+        /// 字符串拷贝函数
+        /// </summary>
+        /// <param name="value">需要拷贝的字符串</param>
+        /// <returns></returns>
+        public unsafe static string Copy(string value)
+        {
+
+            string joinString = FastAllocateString(value.Length);
+
+            fixed (char* pointerToResult = joinString)
+            {
+                fixed (char* pointerToTempString = value)
+                {
+                    Memmove((byte*)(pointerToResult), (byte*)pointerToTempString, (uint)(value.Length * CharSize));
+                }
+            }
+            return joinString;
+        }
+
+        public unsafe static string Contact(params string[] values)
+        {
+            int length = 0;
+            int count = values.Length;
+            for (int i = 0; i < count; i += 1)
+            {
+                length += values[i].Length;
+            }
+            string joinString = FastAllocateString(length);
+
+            fixed (char* pointerToResult = joinString)
+            {
+                int step = 0;
+                for (int i = 0; i < count; i += 1)
+                {
+                    fixed (char* pointerToTempString = values[i])
+                    {
+                        Memmove((byte*)(pointerToResult + step), (byte*)pointerToTempString, (uint)(values[i].Length * CharSize));
+                    }
+                    step += values[i].Length;
+                }
+            }
+            return joinString;
+        }
+
         public unsafe string Append(params string[] values)
         {
             int length = 0;
@@ -138,11 +211,9 @@ namespace System
                     step += values[i].Length;
                 }
             }
-
             return ContactString(joinString);
         }
 
-        [System.Security.SecurityCritical]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal unsafe string ContactString(string newString)
         {
@@ -163,6 +234,7 @@ namespace System
                     Memmove((byte*)(pointerToResult + oldLength), (byte*)pointerToNewString, (uint)(newLength * CharSize));
                 }
             }
+            _value = null;
             _value = joinString;
             return joinString;
         }
